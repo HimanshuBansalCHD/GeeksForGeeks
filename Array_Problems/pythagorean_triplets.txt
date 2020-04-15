@@ -1,0 +1,57 @@
+/* https://practice.geeksforgeeks.org/problems/pythagorean-triplet/0/?track=sp-arrays-and-searching&batchId=152  */
+
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-- >0){
+		    int n=sc.nextInt();
+		    int[] A=new int[n];
+		    for(int i=0;i<n;i++){
+		        int a=sc.nextInt();
+		        A[i]=a*a;
+		    }
+		    boolean flag=false;
+		    Arrays.sort(A);
+		    for(int i=0;i<n && flag==false;i++){
+		        for(int j=0;j<n && flag==false;j++){
+		            for(int k=0;k<n;k++){
+		                if(i!=j && j!=k){
+		                    if(A[i]+A[j]==A[k]){
+		                        System.out.println("Yes");
+		                        flag=true;
+		                        break;
+		                    }
+		                }
+		            }
+		        }
+		    }
+		  //  HashMap<Integer,Integer> mp=new HashMap<Integer,Integer>();
+		  //  boolean flag=false;
+		  //  for(int i=0;i<n;i++){
+		  //      for(int j=0;j<n;j++){
+		  //          if(i!=j){
+		  //          mp.put(A[i]+A[j],1);
+		  //          }
+    //             }
+	   //     }
+	   //     for(int i=0;i<n;i++){
+	   //         if(mp.get(A[i])!=null){
+	   //             System.out.println("Yes");
+	   //             flag=true;
+	   //             break;
+	   //         }
+	   //     }
+		    if(!flag){
+		        System.out.println("No");
+		    }
+		}
+	}
+}

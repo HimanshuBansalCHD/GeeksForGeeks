@@ -1,0 +1,39 @@
+/* https://practice.geeksforgeeks.org/problems/equilibrium-point/0/?track=sp-arrays-and-searching&batchId=152  */
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws Exception{
+		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+		int t=Integer.parseInt(bf.readLine());
+		while(t-- > 0){
+		    int n=Integer.parseInt(bf.readLine());
+		    String[] s=bf.readLine().split(" ");
+		    int[] A=new int[n];
+		    int sum=0;
+		    for(int i=0;i<n;i++){
+		        A[i]=Integer.parseInt(s[i]);
+		        sum+=A[i];
+		    }
+		    int lsum=0;
+		    boolean flag=false;
+		    for(int i=0;i<n;i++){
+		        if(lsum==sum-A[i]){
+		            System.out.println(i+1);
+		            flag=true;
+		            break;
+		        }
+		        lsum+=A[i];
+		        sum-=A[i];
+		    }
+		    if(!flag){
+		        System.out.println(-1);
+		    }
+		}
+	}
+}
+

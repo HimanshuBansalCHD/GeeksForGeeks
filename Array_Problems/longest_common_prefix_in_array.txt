@@ -1,0 +1,49 @@
+/* https://practice.geeksforgeeks.org/problems/longest-common-prefix-in-an-array/0/?track=sp-arrays-and-searching&batchId=152  */
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-- > 0){
+		    int n=sc.nextInt();
+		    String[] s=new String[n];
+		    for(int i=0;i<n;i++){
+		        s[i]=sc.next();
+		    }
+		    int l=s[0].length(),index=0;
+		    for(int i=1;i<s.length;i++){
+		        if(l<s[i].length()){
+		            l=s[i].length();
+		            index=i;
+		        }
+		    }
+		    String ms=s[index];
+		    int i=0;
+		    l=ms.length();
+		    boolean flag=true;
+		    while(ms.length()!=0){
+		        for(i=0;i<s.length;i++){
+		            if(s[i].indexOf(ms)!=0){
+		                ms=ms.substring(0,l);
+		                l--;
+		                break;
+		            }
+		        }
+		        if(i==s.length){
+		            flag=false;
+		            System.out.println(ms);
+		            break;
+		        }
+		    }
+		    if(flag){
+		        System.out.println(-1);
+		    }
+		}
+	}
+}

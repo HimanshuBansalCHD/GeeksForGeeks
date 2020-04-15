@@ -1,0 +1,40 @@
+/* https://practice.geeksforgeeks.org/problems/rotate-array-by-n-elements/0/?track=sp-arrays-and-searching&batchId=152  */
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    public static void rev(String[] A,int i ,int j){
+        for(int k=i;k<=j;k++){
+            String t=A[i];
+            A[i]=A[j];
+            A[j]=t;
+            i++;j--;
+        }
+    }
+	public static void main (String[] args) throws Exception{
+		Scanner sc=new Scanner(System.in);
+        BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+        int t=Integer.parseInt(bf.readLine());
+        while(t-- > 0){
+            String s=bf.readLine();
+            String[] x=s.split(" ");
+            int n=Integer.parseInt(x[0]);
+            int d=Integer.parseInt(x[1]);
+            // int[] A=new int[n];
+            s=bf.readLine();
+            x=s.split(" ");
+            rev(x,0,d-1);
+            rev(x,d,n-1);
+            rev(x,0,n-1);
+            for(int i=0;i<n;i++)
+            {
+                System.out.print(x[i]+" ");
+            }
+            System.out.println();
+        }
+	}
+}

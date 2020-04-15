@@ -1,0 +1,40 @@
+/* https://practice.geeksforgeeks.org/problems/find-the-closest-number/0/?track=sp-arrays-and-searching&batchId=152  */
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-- > 0){
+		    int n=sc.nextInt();
+		    int d=sc.nextInt();
+		    int ans=0;
+		    int[] A=new int[n];
+		    for(int i=0;i<n;i++){
+		        A[i]=sc.nextInt();
+		    }
+		  //  System.out.println(A[0]+" "+d);
+		    if(A[0]>d){
+		        System.out.println(A[0]);
+		    }
+		    else if(A[n-1]<=d){
+		        System.out.println(A[n-1]);
+		    }
+		    else{
+    		    for(int i=0;i<n;i++){
+    		        if(A[i]>d){
+    		            ans=Math.abs(A[i-1]-d)>=Math.abs(A[i]-d)?(i):(i-1);
+    		            break;
+    		        }
+    		    }
+		    System.out.println(A[ans]);
+		    }
+		}
+	}
+}
+

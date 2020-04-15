@@ -1,0 +1,38 @@
+/* https://practice.geeksforgeeks.org/problems/immediate-smaller-element/0/?track=sp-arrays-and-searching&batchId=152 */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t > 0)
+        {
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = sc.nextInt();
+            }
+            search(arr, n);
+            t--;
+        }
+    }
+    
+    public static void search(int a[], int size) {
+        StringBuffer buffer = new StringBuffer();
+        for (int i=0;i < size - 1;i++) {
+             if(a[i] > a[i+1]) {
+                 buffer.append(a[i+1]);
+             } else {
+                 buffer.append("-1");
+             }
+            buffer.append(" ");
+        }
+        buffer.append("-1");
+        System.out.println(buffer.toString());
+    }
+}

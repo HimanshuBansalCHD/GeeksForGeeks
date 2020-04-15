@@ -1,0 +1,33 @@
+/* https://practice.geeksforgeeks.org/problems/chocolate-distribution-problem/0/?track=sp-arrays-and-searching&batchId=152  */
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-- > 0){
+		    int n=sc.nextInt();
+		    int[] A=new int[n];
+		    for(int i=0;i<n;i++){
+		        A[i]=sc.nextInt();
+		    }
+		    int d=sc.nextInt();
+		    Arrays.sort(A);
+		    int cm=0,gm=Integer.MAX_VALUE,i=0;
+		    d=d-1;
+		    while((d+i)<n){
+		        cm=A[d+i]-A[i];
+		        if(cm<gm){
+		            gm=cm;
+		        }
+		        i++;
+		    }
+		    System.out.println(gm);
+		}
+	}
+}
