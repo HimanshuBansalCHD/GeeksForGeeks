@@ -1,0 +1,37 @@
+class View
+{
+    // function should print the topView of the binary tree
+    
+    static void topView(Node root)
+    {
+        if(root==null){
+            return;
+        }
+        class customQueue{
+        int hzheight;
+        Node node;
+        customQueue(Node n,int data){
+            hzheight=data;
+            node=n;
+        }
+        }
+        Queue<customQueue> queue=new LinkedList<>();
+        Map<Integer,Node> tm=new TreeMap<>();
+        queue.add(new customQueue(root,0));
+        while(!queue.isEmpty()){
+            customQueue q=queue.remove();
+            if(!tm.containsKey(q.hzheight)){
+                tm.put(q.hzheight,q.node);
+            }
+            if(q.node.left!=null){
+                queue.add(new customQueue(q.node.left,q.hzheight-1));
+            }
+            if(q.node.right!=null){
+                queue.add(new customQueue(q.node.right,q.hzheight+1));
+            }
+        }
+        for(Map.Entry<Integer,Node> e : tm.entrySet()){
+            System.out.print(e.getValue().data+" ");
+        }
+    }
+}

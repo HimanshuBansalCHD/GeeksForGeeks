@@ -1,0 +1,58 @@
+/*class Node
+{
+    int data;
+    Node left, right;
+    
+    Node(int key)
+    {
+        data = key;
+        left = right = null;
+    }
+}*/
+
+class BinaryTree
+{
+    static void verticalOrder(Node root)
+    {
+        if(root==null){
+            return;
+        }
+        class customQueue{
+            int toplevel;
+            Node node;
+            customQueue(Node n,int t){
+                toplevel=t;
+                node=n;
+            }
+        }
+        Map<Integer,Queue<Node>> tm=new TreeMap<>();
+        Queue<customQueue> queue=new LinkedList<>();
+        queue.add(new customQueue(root,0));
+        while(!queue.isEmpty()){
+            customQueue tmp=queue.remove();
+            if(!tm.containsKey(tmp.toplevel)){
+                Queue<Node> q=new LinkedList<Node>();
+                q.add(tmp.node);
+                tm.put(tmp.toplevel,q);
+            }
+            else if(tm.containsKey(tmp.toplevel)){
+                Queue<Node> q=tm.get(tmp.toplevel);
+                q.add(tmp.node);
+                tm.put(tmp.toplevel,q);
+            }
+            if(tmp.node.left!=null){
+                queue.add(new customQueue(tmp.node.left,tmp.toplevel-1));
+            }
+            if(tmp.node.right!=null){
+                queue.add(new customQueue(tmp.node.right,tmp.toplevel+1));
+            }
+        }
+        for(Map.Entry<Integer,Queue<Node>> e : tm.entrySet()){
+            Queue<Node> q=e.getValue();
+            while(!q.isEmpty()){
+                System.out.print(q.remove().data+" ");
+            }
+        }
+    }
+}
+

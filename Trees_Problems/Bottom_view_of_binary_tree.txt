@@ -1,0 +1,40 @@
+class Tree
+{
+ 
+    // Method that prints the bottom view.
+    public void bottomView(Node root)
+    {
+        if(root==null){
+            return;
+        }
+        class customQueue{
+            int bottomlevel;
+            Node node;
+            customQueue(Node n,int v){
+                node=n;
+                bottomlevel=v;
+                }
+        }
+        Map<Integer,Node> tm=new TreeMap<>();
+        Queue<customQueue> queue=new LinkedList<>();
+        queue.add(new customQueue(root,0));
+        while(!queue.isEmpty()){
+            customQueue tmp=queue.remove();
+            if(!tm.containsKey(tmp.bottomlevel)){
+                tm.put(tmp.bottomlevel,tmp.node);
+            }
+            else if(tm.containsKey(tmp.bottomlevel)){
+                tm.put(tmp.bottomlevel,tmp.node);
+            }
+            if(tmp.node.left!=null){
+                queue.add(new customQueue(tmp.node.left,tmp.bottomlevel-1));
+            }
+            if(tmp.node.right!=null){
+                queue.add(new customQueue(tmp.node.right,tmp.bottomlevel+1));
+            }
+        }
+        for(Map.Entry<Integer,Node> e : tm.entrySet()){
+            System.out.print(e.getValue().data+" ");
+        }
+    }
+}
