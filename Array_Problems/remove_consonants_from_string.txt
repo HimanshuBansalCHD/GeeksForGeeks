@@ -1,0 +1,37 @@
+/* https://practice.geeksforgeeks.org/problems/c-program-to-remove-consonants-from-a-string/0/?track=sp-arrays-and-searching&batchId=152  */
+
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws IOException{
+		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+		int t=Integer.parseInt(bf.readLine());
+		while(t-- > 0){
+		    boolean f=true;
+		    String s=bf.readLine();
+		    for(int i=0;i<s.length();i++){
+		        if(s.charAt(i)=='a' || s.charAt(i)=='e' || s.charAt(i)=='i' || s.charAt(i)=='o' || s.charAt(i)=='u' || s.charAt(i)==' ')
+		        {
+		            f=false;
+		            System.out.print(s.charAt(i));
+		        }
+		        else if(s.charAt(i)=='A' || s.charAt(i)=='E' || s.charAt(i)=='I' || s.charAt(i)=='O' || s.charAt(i)=='U' || s.charAt(i)==' ')
+		        {
+		            f=false;
+		            System.out.print(s.charAt(i));
+		        }
+		    }
+		    if(f){
+		        System.out.println("No Vowel");
+		    }
+		    else{
+		        System.out.println();
+		    }
+		}
+	}
+}

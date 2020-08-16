@@ -1,0 +1,41 @@
+/* https://practice.geeksforgeeks.org/problems/reverse-array-in-groups/0/?track=sp-arrays-and-searching&batchId=152  */
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void rev(String[] A,int i ,int j){
+        for(int k=i;k<=j;k++){
+            String t=A[i];
+            A[i]=A[j];
+            A[j]=t;
+            i++;j--;
+        }
+    }
+	public static void main (String[] args) throws Exception{
+        BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+        int t=Integer.parseInt(bf.readLine());
+        while(t-- > 0){
+            String[] x=bf.readLine().split(" ");
+            int n=Integer.parseInt(x[0]);
+            int d=Integer.parseInt(x[1]);
+            x=bf.readLine().split(" ");
+            int p=0;
+            int div=n/d;
+            for(int i=0;i<div;i++){
+                rev(x,p,(p+d)-1);
+                p+=d;
+            }
+            div=n%d;
+            rev(x,(n-div),n-1);
+            for(String s:x)
+            {
+                System.out.print(s+" ");
+            }
+            System.out.println();
+        }
+	}
+}
